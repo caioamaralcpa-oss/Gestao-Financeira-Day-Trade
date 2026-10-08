@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f6f8">
+  <title>Diário WDO · Gestão de operações</title>
+  <style>
+    :root{color-scheme:light;--ink:#182230;--muted:#667085;--line:#e5e9ef;--paper:#fff;--wash:#f5f6f8;--green:#16794b;--red:#bd3d45;--blue:#315fe8;--radius:16px;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;background:var(--wash);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.shell{max-width:1180px;margin:auto;padding:32px 22px 60px}.top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:30px}.brand{display:flex;align-items:center;gap:13px}.mark{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:#172554;color:#fff;font-weight:800;letter-spacing:-.08em}.eyebrow{font-size:11px;font-weight:750;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}h1{font-size:24px;letter-spacing:-.04em;margin:3px 0 0}.top-actions{display:flex;align-items:center;gap:12px}.email{font-size:13px;color:var(--muted)}.button{border:0;border-radius:10px;padding:11px 15px;font-weight:700;background:var(--blue);color:white}.button.secondary{background:#edf1f7;color:#27354a}.button.danger{background:#fff0f0;color:#a82d38}.button:disabled{opacity:.55;cursor:wait}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:0 2px 7px #11182705}.metric-label{font-size:12px;color:var(--muted);font-weight:650}.metric{font-size:27px;letter-spacing:-.05em;font-weight:760;margin:11px 0 5px}.hint{font-size:12px;color:var(--muted)}.positive{color:var(--green)}.negative{color:var(--red)}.section{margin-top:22px}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:28px 0 13px}.section-head h2{font-size:17px;letter-spacing:-.025em;margin:0}.section-head p{font-size:12px;color:var(--muted);margin:5px 0 0}.columns{display:grid;grid-template-columns:minmax(290px,.82fr) minmax(0,1.5fr);gap:16px}.form-card h2{font-size:16px;margin:0 0 18px}.field{display:grid;gap:7px;margin:13px 0}.field label{font-size:12px;font-weight:700;color:#344054}.field input,.field select{width:100%;border:1px solid #d7dde6;border-radius:10px;padding:11px 12px;background:white;color:var(--ink)}.field input:focus,.field select:focus{outline:3px solid #315fe822;border-color:var(--blue)}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.form-note{font-size:12px;line-height:1.5;color:var(--muted);padding:11px 12px;border-radius:10px;background:#f6f8fb;margin:12px 0 16px}.form-card .button{width:100%}.table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse;min-width:570px}.table th,.table td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);font-size:12px;white-space:nowrap}.table th{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.table td strong{font-size:13px}.pill{display:inline-flex;padding:5px 8px;border-radius:20px;background:#eef2ff;color:#364dc6;font-weight:700}.pill.gain{background:#eaf7ef;color:var(--green)}.pill.stop{background:#fff0f0;color:var(--red)}.icon-button{border:0;background:transparent;color:var(--muted);font-weight:700;padding:6px}.empty{text-align:center;padding:35px 12px;color:var(--muted);font-size:13px}.notice{margin:0 0 18px;padding:13px 15px;border-radius:12px;font-size:13px;line-height:1.5;background:#eef3ff;color:#29417d}.notice.warning{background:#fff4df;color:#83530d}.notice.error{background:#fff0f0;color:#9f3039}.notice[hidden]{display:none}.auth{max-width:430px;margin:8vh auto;padding:30px}.auth h1{margin:0 0 8px}.auth p{color:var(--muted);line-height:1.55;font-size:14px}.auth .button{width:100%;margin-top:8px}.tabs{display:flex;gap:8px;margin:18px 0}.tabs button{border:1px solid var(--line);border-radius:9px;background:white;padding:8px 12px;color:var(--muted);font-size:13px;font-weight:700}.tabs button.active{background:#edf1ff;color:#274bd0;border-color:#dce4ff}.rule{height:1px;background:var(--line);margin:16px 0}.alert-list{display:flex;flex-wrap:wrap;gap:8px}.alert-chip{font-size:12px;padding:9px 11px;border-radius:10px;background:#fff4df;color:#80510b}.alert-chip.ok{background:#eaf7ef;color:#176641}.fineprint{font-size:11px;color:var(--muted);line-height:1.55;margin-top:20px}.spinner{display:inline-block;width:15px;height:15px;border:2px solid #fff7;border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:-3px;margin-right:6px}@keyframes spin{to{transform:rotate(360deg)}}@media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.columns{grid-template-columns:1fr}.shell{padding:22px 15px 45px}}@media(max-width:520px){.top{align-items:flex-start}.top-actions{flex-direction:column;align-items:flex-end;gap:6px}.email{max-width:150px;overflow:hidden;text-overflow:ellipsis}.metric{font-size:23px}.card{padding:16px}.auth{margin:4vh 14px;padding:23px}}
+  </style>
+</head>
+<body>
+  <main id="auth-view" class="card auth" hidden>
+    <div class="brand" style="margin-bottom:22px"><div class="mark">WDO</div><div><div class="eyebrow">Diário de operações</div><h1>Gestão do mini dólar</h1></div></div>
+    <p>Acesse sua conta para registrar operações. Os dados ficam no Supabase e a sessão permanece apenas enquanto esta página estiver aberta.</p>
+    <div class="tabs"><button id="tab-login" class="active" type="button">Entrar</button><button id="tab-signup" type="button">Criar conta</button></div>
+    <div id="auth-message" class="notice" hidden></div>
+    <form id="auth-form"><div class="field"><label for="auth-email">E-mail</label><input id="auth-email" type="email" autocomplete="email" required></div><div class="field"><label for="auth-password">Senha</label><input id="auth-password" type="password" autocomplete="current-password" minlength="8" required></div><button id="auth-submit" class="button" type="submit">Entrar</button></form>
+    <div class="fineprint">A sessão não é salva neste navegador. Ao fechar ou recarregar a página, será necessário entrar novamente.</div>
+  </main>
+
+  <div id="app-view" class="shell" hidden>
+    <header class="top"><div class="brand"><div class="mark">WDO</div><div><div class="eyebrow">Diário de operações</div><h1>Gestão do mini dólar</h1></div></div><div class="top-actions"><span id="user-email" class="email"></span><button id="signout" class="button secondary" type="button">Sair</button></div></header>
+    <div id="app-message" class="notice" role="status" hidden></div>
+    <div id="alerts" class="section alert-list"></div>
+    <section class="grid section" aria-label="Indicadores do mês">
+      <article class="card"><div class="metric-label">Saldo estimado</div><div id="metric-balance" class="metric">—</div><div class="hint">Capital-base + resultados líquidos</div></article>
+      <article class="card"><div class="metric-label">Lote deste mês</div><div id="metric-lot" class="metric">—</div><div id="metric-lot-hint" class="hint">Margem mensal por contrato</div></article>
+      <article class="card"><div class="metric-label">Resultado do mês</div><div id="metric-month" class="metric">—</div><div id="metric-month-hint" class="hint">0 operações registradas</div></article>
+      <article class="card"><div class="metric-label">Taxa de gain</div><div id="metric-rate" class="metric">—</div><div class="hint">Referência: 75%</div></article>
+    </section>
+    <section class="columns section">
+      <article class="card form-card"><h2>Registrar operação</h2>
+        <form id="operation-form"><div class="field"><label for="operation-date">Data</label><input id="operation-date" type="date" required></div>
+          <div class="field"><label for="outcome">Resultado do dia</label><select id="outcome"><option value="gain">Gain · +R$ 60 por contrato</option><option value="stop">Stop · −R$ 100 por contrato</option><option value="flat">Sem resultado · R$ 0</option></select></div>
+          <div class="form-row"><div class="field"><label for="contracts">Contratos</label><input id="contracts" type="number" min="1" step="1" required></div><div class="field"><label for="costs">Custos (R$)</label><input id="costs" type="number" min="0" step="0.01" value="0" required></div></div>
+          <div id="plan-note" class="form-note">O lote é definido no primeiro registro do mês e fica fixo até o próximo mês.</div><button id="save-operation" class="button" type="submit">Salvar operação</button></form>
+      </article>
+      <article class="card form-card"><h2>Capital-base</h2><p class="hint">Valor inicial usado para estimar o saldo. A alteração não muda o lote já fixado para o mês atual.</p>
+        <form id="capital-form"><div class="field"><label for="initial-capital">Capital inicial (R$)</label><input id="initial-capital" type="number" min="0" step="0.01" required></div><button id="save-capital" class="button secondary" type="submit">Atualizar capital-base</button></form>
+        <div class="rule"></div><div class="metric-label">Expectativa de referência</div><div id="metric-expectancy" class="metric">—</div><div class="hint">R$ 400 brutos por contrato no mês</div>
+      </article>
+    </section>
+    <section class="section"><div class="section-head"><div><h2>Histórico de operações</h2><p>Uma operação por usuário e por data.</p></div><div id="drawdown" class="hint"></div></div>
+      <article class="card table-wrap"><table class="table"><thead><tr><th>Data</th><th>Resultado</th><th>Contratos</th><th>Bruto</th><th>Custos</th><th>Líquido</th><th></th></tr></thead><tbody id="operations-body"></tbody></table><div id="empty-state" class="empty" hidden>Nenhuma operação registrada ainda.</div></article></section>
+    <p class="fineprint">Os ganhos e stops são calculados no banco. O acesso aos dados é limitado à sua conta por políticas RLS. Esta página não salva operações, sessão ou chaves no armazenamento local do navegador e não oferece exportação de dados.</p>
+  </div>
+
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.100.0/+esm';
+    import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from './supabase-config.js';
+
+    const $ = (id) => document.getElementById(id);
+    const configured = !SUPABASE_URL.includes('YOUR_PROJECT_REF') && !SUPABASE_PUBLISHABLE_KEY.includes('YOUR_SUPABASE_PUBLISHABLE_KEY');
+    const supabase = configured ? createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
+      auth: { persistSession: false, detectSessionInUrl: false, autoRefreshToken: true }
+    }) : null;
+    let authMode = 'login';
+    let currentUser = null;
+    let operations = [];
+    let plan = null;
+    const money = (amount) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(Number(amount || 0));
+    const localDate = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; };
+    const monthOf = (date) => `${date.slice(0,7)}-01`;
+    const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    function showMessage(id, text, kind='') { const box=$(id); box.textContent=text; box.className=`notice ${kind}`.trim(); box.hidden=false; }
+    function clearMessage(id) { $(id).hidden=true; }
+    function setBusy(button, busy, label) { button.disabled=busy; button.innerHTML=busy?'<span class="spinner"></span>Aguarde…':label; }
+    function showAuth() { $('auth-view').hidden=false; $('app-view').hidden=true; }
+    function showApp() { $('auth-view').hidden=true; $('app-view').hidden=false; }
+    function setAuthMode(mode) { authMode=mode; $('tab-login').classList.toggle('active',mode==='login'); $('tab-signup').classList.toggle('active',mode==='signup'); $('auth-submit').textContent=mode==='login'?'Entrar':'Criar conta'; $('auth-password').autocomplete=mode==='login'?'current-password':'new-password'; clearMessage('auth-message'); }
+    async function loadData() {
+      clearMessage('app-message');
+      const [{data: profileData,error: profileError},{data: opsData,error: opsError}] = await Promise.all([
+        supabase.from('trade_profiles').select('initial_capital').eq('user_id',currentUser.id).maybeSingle(),
+        supabase.from('trade_operations').select('id,operation_date,outcome,contracts,costs,gross_result,net_result').eq('user_id',currentUser.id).order('operation_date',{ascending:false})
+      ]);
+      if(profileError||opsError) throw profileError||opsError;
+      operations=opsData||[];
+      $('initial-capital').value=profileData?.initial_capital??0;
+      const today=localDate(); $('operation-date').value=today;
+      if(Number(profileData?.initial_capital||0)>0){
+        const {data: planData,error: planError}=await supabase.rpc('ensure_monthly_plan',{p_month_start:monthOf(today)});
+        if(planError) throw planError;
+        plan=Array.isArray(planData)?planData[0]:planData;
+      }else plan=null;
+      $('contracts').value=Math.max(1,Number(plan?.contract_limit||0));
+      $('contracts').max=String(plan?.contract_limit||0);
+      $('contracts').disabled=!plan||Number(plan.contract_limit)<1;
+      $('save-operation').disabled=$('contracts').disabled;
+      $('metric-lot').textContent=`${Number(plan?.contract_limit||0)} ${Number(plan?.contract_limit)===1?'contrato':'contratos'}`;
+      $('metric-lot-hint').textContent=plan?`Margem ${money(plan.margin_per_contract)} por contrato · saldo no início do mês ${money(plan.starting_balance)}`:'Defina o capital-base para calcular o lote mensal.';
+      render();
+    }
+    function render() {
+      const initial=Number($('initial-capital').value||0);
+      const total=operations.reduce((sum,op)=>sum+Number(op.net_result),0);
+      const balance=initial+total;
+      const today=localDate(),month=today.slice(0,7);
+      const monthOps=operations.filter(op=>op.operation_date.slice(0,7)===month);
+      const monthResult=monthOps.reduce((sum,op)=>sum+Number(op.net_result),0);
+      const decided=monthOps.filter(op=>op.outcome!=='flat');
+      const wins=decided.filter(op=>op.outcome==='gain').length;
+      const rate=decided.length?wins/decided.length*100:null;
+      $('metric-balance').textContent=money(balance);
+      $('metric-balance').className=`metric ${balance<0?'negative':''}`;
+      $('metric-month').textContent=money(monthResult);
+      $('metric-month').className=`metric ${monthResult>0?'positive':monthResult<0?'negative':''}`;
+      $('metric-month-hint').textContent=`${monthOps.length} ${monthOps.length===1?'operação':'operações'} registradas`;
+      $('metric-rate').textContent=rate===null?'—':`${rate.toFixed(1).replace('.',',')}%`;
+      $('metric-rate').className=`metric ${rate===null?'':rate>=75?'positive':'negative'}`;
+      $('metric-expectancy').textContent=money(400*Number(plan?.contract_limit||0));
+
+      const rows=operations.map(op=>`<tr><td>${new Date(`${op.operation_date}T12:00:00`).toLocaleDateString('pt-BR')}</td><td><span class="pill ${op.outcome}">${op.outcome==='gain'?'Gain':op.outcome==='stop'?'Stop':'Sem resultado'}</span></td><td>${op.contracts}</td><td>${money(op.gross_result)}</td><td>${money(op.costs)}</td><td><strong class="${Number(op.net_result)>0?'positive':Number(op.net_result)<0?'negative':''}">${money(op.net_result)}</strong></td><td><button class="icon-button" type="button" data-delete="${escapeHtml(op.id)}" aria-label="Excluir operação de ${escapeHtml(op.operation_date)}">Excluir</button></td></tr>`).join('');
+      $('operations-body').innerHTML=rows;
+      $('empty-state').hidden=operations.length>0;
+      const chronological=[...operations].sort((a,b)=>a.operation_date.localeCompare(b.operation_date));
+      let equity=initial,peak=initial,maxDrawdown=0;
+      for(const op of chronological){equity+=Number(op.net_result);peak=Math.max(peak,equity);maxDrawdown=Math.max(maxDrawdown,peak-equity);}
+      $('drawdown').textContent=`Drawdown máximo: ${money(maxDrawdown)}`;
+
+      const reverseMonth=[...monthOps].sort((a,b)=>b.operation_date.localeCompare(a.operation_date));
+      let consecutiveStops=0; for(const op of reverseMonth){if(op.outcome==='stop')consecutiveStops++;else break;}
+      const chips=[];
+      chips.push(consecutiveStops>=4?`⚠ ${consecutiveStops} stops consecutivos neste mês`: '✓ Sem alerta de stops consecutivos');
+      chips.push(balance<1000?'⚠ Saldo abaixo da referência de R$ 1.000 para um contrato':'✓ Saldo acima da referência mínima');
+      $('alerts').innerHTML=chips.map((text,i)=>`<span class="alert-chip ${i===0&&consecutiveStops<4||i===1&&balance>=1000?'ok':''}">${escapeHtml(text)}</span>`).join('');
+      $('plan-note').textContent=`Lote fixo do mês: ${Number(plan?.contract_limit||0)} contrato(s), calculado sobre ${money(plan?.starting_balance)} no início do período.`;
+    }
+
+    $('tab-login').addEventListener('click',()=>setAuthMode('login'));
+    $('tab-signup').addEventListener('click',()=>setAuthMode('signup'));
+    $('auth-form').addEventListener('submit',async(event)=>{
+      event.preventDefault(); clearMessage('auth-message');
+      const button=$('auth-submit'),label=authMode==='login'?'Entrar':'Criar conta'; setBusy(button,true,label);
+      try{
+        const email=$('auth-email').value.trim(),password=$('auth-password').value;
+        const result=authMode==='login'?await supabase.auth.signInWithPassword({email,password}):await supabase.auth.signUp({email,password});
+        if(result.error) throw result.error;
+        if(authMode==='signup'&&!result.data.session){showMessage('auth-message','Conta criada. Confira seu e-mail para confirmar o cadastro e depois entre.');}
+        else {currentUser=result.data.user; $('user-email').textContent=currentUser.email||''; showApp(); await loadData();}
+      }catch(error){showMessage($('app-view').hidden?'auth-message':'app-message',error.message||'Não foi possível autenticar.','error');}
+      finally{setBusy(button,false,label);}
+    });
+    $('signout').addEventListener('click',async()=>{await supabase.auth.signOut({scope:'local'});currentUser=null;operations=[];plan=null;showAuth();});
+    $('operation-date').addEventListener('change',async()=>{
+      const selected=$('operation-date').value;if(!selected)return;
+      try{
+        if(Number($('initial-capital').value||0)<=0) throw new Error('Informe um capital-base maior que zero antes de registrar operações.');
+        const {data,error}=await supabase.rpc('ensure_monthly_plan',{p_month_start:monthOf(selected)});
+        if(error)throw error;plan=Array.isArray(data)?data[0]:data;
+        $('contracts').max=String(plan.contract_limit);$('contracts').value=Math.max(1,Number(plan.contract_limit));
+        $('contracts').disabled=Number(plan.contract_limit)<1;$('save-operation').disabled=$('contracts').disabled;render();
+      }catch(error){showMessage('app-message',error.message||'Não foi possível carregar o lote deste mês.','error');}
+    });
+    $('operation-form').addEventListener('submit',async(event)=>{
+      event.preventDefault();clearMessage('app-message');const button=$('save-operation');setBusy(button,true,'Salvar operação');
+      try{
+        if(Number($('initial-capital').value||0)<=0) throw new Error('Informe um capital-base maior que zero antes de registrar operações.');
+        const date=$('operation-date').value, monthStart=monthOf(date);
+        const {data: planData,error: planError}=await supabase.rpc('ensure_monthly_plan',{p_month_start:monthStart});
+        if(planError)throw planError;
+        const monthly=Array.isArray(planData)?planData[0]:planData;
+        const count=Number($('contracts').value);
+        if(!monthly||count<1||count>Number(monthly.contract_limit))throw new Error(`O lote disponível para este mês é ${monthly?.contract_limit||0} contrato(s).`);
+        const {error}=await supabase.from('trade_operations').insert({user_id:currentUser.id,operation_date:date,outcome:$('outcome').value,contracts:count,costs:Number($('costs').value||0)});
+        if(error)throw error;
+        showMessage('app-message','Operação salva no banco de dados.');
+        await loadData();
+      }catch(error){showMessage('app-message',error.code==='23505'?'Já existe uma operação para esta data.':error.message||'Não foi possível salvar a operação.','error');}
+      finally{setBusy(button,false,'Salvar operação');}
+    });
+    $('capital-form').addEventListener('submit',async(event)=>{
+      event.preventDefault();clearMessage('app-message');const button=$('save-capital');setBusy(button,true,'Atualizar capital-base');
+      try{
+        const value=Number($('initial-capital').value);
+        const {error}=await supabase.from('trade_profiles').upsert({user_id:currentUser.id,initial_capital:value,updated_at:new Date().toISOString()},{onConflict:'user_id'});
+        if(error)throw error;showMessage('app-message','Capital-base atualizado.');await loadData();
+      }catch(error){showMessage('app-message',error.message||'Não foi possível atualizar o capital-base.','error');}
+      finally{setBusy(button,false,'Atualizar capital-base');}
+    });
+    $('operations-body').addEventListener('click',async(event)=>{
+      const id=event.target.closest('[data-delete]')?.dataset.delete;if(!id)return;
+      if(!window.confirm('Excluir esta operação? Esta ação não pode ser desfeita.'))return;
+      try{const {error}=await supabase.from('trade_operations').delete().eq('id',id);if(error)throw error;showMessage('app-message','Operação excluída.');await loadData();}
+      catch(error){showMessage('app-message',error.message||'Não foi possível excluir a operação.','error');}
+    });
+
+    if(!configured){showAuth();showMessage('auth-message','Configure a URL e a chave publicável do Supabase em supabase-config.js antes de usar.','warning');$('auth-form').querySelectorAll('input,button').forEach(el=>el.disabled=true);}
+    else showAuth();
+  </script>
+</body>
+</html>

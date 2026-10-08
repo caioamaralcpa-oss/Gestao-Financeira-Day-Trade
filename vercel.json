@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/gestao-operacoes-mini-dolar.html"
+    }
+  ]
+}
