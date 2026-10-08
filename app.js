@@ -2,6 +2,22 @@
     import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from './supabase-config.js';
 
     const $ = (id) => document.getElementById(id);
+    function applyTheme(theme) {
+      document.documentElement.dataset.theme=theme;
+      const next=theme==='dark'?'light':'dark';
+      const label=next==='dark'?'☾ Escuro':'☀ Claro';
+      for(const id of ['theme-toggle-auth','theme-toggle-app']){
+        const button=$(id);
+        button.textContent=label;
+        button.setAttribute('aria-label',`Ativar tema ${next==='dark'?'escuro':'claro'}`);
+        button.setAttribute('aria-pressed',String(theme==='dark'));
+      }
+    }
+    const initialTheme=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+    applyTheme(initialTheme);
+    for(const id of ['theme-toggle-auth','theme-toggle-app']){
+      $(id).addEventListener('click',()=>applyTheme(document.documentElement.dataset.theme==='dark'?'light':'dark'));
+    }
     const configured = !SUPABASE_URL.includes('YOUR_PROJECT_REF') && !SUPABASE_PUBLISHABLE_KEY.includes('YOUR_SUPABASE_PUBLISHABLE_KEY');
     const supabase = configured ? createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
       auth: { persistSession: false, detectSessionInUrl: false, autoRefreshToken: true },

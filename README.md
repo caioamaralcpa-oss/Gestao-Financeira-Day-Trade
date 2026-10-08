@@ -2,6 +2,8 @@
 
 Aplicação estática em português para registrar e acompanhar operações de mini dólar. A autenticação e os dados usam Supabase; a página não persiste sessão ou operações no armazenamento local do navegador. A sessão é encerrada após 15 minutos sem atividade, em até 8 horas de uso, ao fechar a página ou ao recarregá-la.
 
+A interface oferece tema claro e escuro. A escolha inicial segue a preferência de aparência do dispositivo; alternar o tema vale até fechar ou recarregar a página e não é gravado localmente.
+
 ## Publicar no Vercel
 
 Importe este repositório no Vercel, selecione a branch `main`, escolha **Other** como framework preset e mantenha a raiz do projeto em `./`. Não há etapa de build nem dependências npm para instalar. O `vercel.json` encaminha a raiz do domínio para a página da aplicação.

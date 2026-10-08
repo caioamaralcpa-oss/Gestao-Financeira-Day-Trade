@@ -7,10 +7,38 @@
   <title>Diário WDO · Gestão de operações</title>
   <style>
     :root{color-scheme:light;--ink:#182230;--muted:#667085;--line:#e5e9ef;--paper:#fff;--wash:#f5f6f8;--green:#16794b;--red:#bd3d45;--blue:#315fe8;--radius:16px;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;background:var(--wash);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}.shell{max-width:1180px;margin:auto;padding:32px 22px 60px}.top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:30px}.brand{display:flex;align-items:center;gap:13px}.mark{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:#172554;color:#fff;font-weight:800;letter-spacing:-.08em}.eyebrow{font-size:11px;font-weight:750;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}h1{font-size:24px;letter-spacing:-.04em;margin:3px 0 0}.top-actions{display:flex;align-items:center;gap:12px}.email{font-size:13px;color:var(--muted)}.button{border:0;border-radius:10px;padding:11px 15px;font-weight:700;background:var(--blue);color:white}.button.secondary{background:#edf1f7;color:#27354a}.button.danger{background:#fff0f0;color:#a82d38}.button:disabled{opacity:.55;cursor:wait}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:0 2px 7px #11182705}.metric-label{font-size:12px;color:var(--muted);font-weight:650}.metric{font-size:27px;letter-spacing:-.05em;font-weight:760;margin:11px 0 5px}.hint{font-size:12px;color:var(--muted)}.positive{color:var(--green)}.negative{color:var(--red)}.section{margin-top:22px}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:28px 0 13px}.section-head h2{font-size:17px;letter-spacing:-.025em;margin:0}.section-head p{font-size:12px;color:var(--muted);margin:5px 0 0}.columns{display:grid;grid-template-columns:minmax(290px,.82fr) minmax(0,1.5fr);gap:16px}.form-card h2{font-size:16px;margin:0 0 18px}.field{display:grid;gap:7px;margin:13px 0}.field label{font-size:12px;font-weight:700;color:#344054}.field input,.field select{width:100%;border:1px solid #d7dde6;border-radius:10px;padding:11px 12px;background:white;color:var(--ink)}.field input:focus,.field select:focus{outline:3px solid #315fe822;border-color:var(--blue)}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.form-note{font-size:12px;line-height:1.5;color:var(--muted);padding:11px 12px;border-radius:10px;background:#f6f8fb;margin:12px 0 16px}.form-card .button{width:100%}.table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse;min-width:570px}.table th,.table td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);font-size:12px;white-space:nowrap}.table th{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.table td strong{font-size:13px}.pill{display:inline-flex;padding:5px 8px;border-radius:20px;background:#eef2ff;color:#364dc6;font-weight:700}.pill.gain{background:#eaf7ef;color:var(--green)}.pill.stop{background:#fff0f0;color:var(--red)}.icon-button{border:0;background:transparent;color:var(--muted);font-weight:700;padding:6px}.empty{text-align:center;padding:35px 12px;color:var(--muted);font-size:13px}.notice{margin:0 0 18px;padding:13px 15px;border-radius:12px;font-size:13px;line-height:1.5;background:#eef3ff;color:#29417d}.notice.warning{background:#fff4df;color:#83530d}.notice.error{background:#fff0f0;color:#9f3039}.notice[hidden]{display:none}.auth{max-width:430px;margin:8vh auto;padding:30px}.auth h1{margin:0 0 8px}.auth p{color:var(--muted);line-height:1.55;font-size:14px}.auth .button{width:100%;margin-top:8px}.tabs{display:flex;gap:8px;margin:18px 0}.tabs button{border:1px solid var(--line);border-radius:9px;background:white;padding:8px 12px;color:var(--muted);font-size:13px;font-weight:700}.tabs button.active{background:#edf1ff;color:#274bd0;border-color:#dce4ff}.rule{height:1px;background:var(--line);margin:16px 0}.alert-list{display:flex;flex-wrap:wrap;gap:8px}.alert-chip{font-size:12px;padding:9px 11px;border-radius:10px;background:#fff4df;color:#80510b}.alert-chip.ok{background:#eaf7ef;color:#176641}.fineprint{font-size:11px;color:var(--muted);line-height:1.55;margin-top:20px}.spinner{display:inline-block;width:15px;height:15px;border:2px solid #fff7;border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:-3px;margin-right:6px}@keyframes spin{to{transform:rotate(360deg)}}@media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.columns{grid-template-columns:1fr}.shell{padding:22px 15px 45px}}@media(max-width:520px){.top{align-items:flex-start}.top-actions{flex-direction:column;align-items:flex-end;gap:6px}.email{max-width:150px;overflow:hidden;text-overflow:ellipsis}.metric{font-size:23px}.card{padding:16px}.auth{margin:4vh 14px;padding:23px}}
+    :root[data-theme="dark"]{color-scheme:dark;--ink:#e8edf5;--muted:#a6b0c0;--line:#303949;--paper:#151c27;--wash:#0b1017;--green:#6fd3a0;--red:#ff858c;--blue:#819cff}
+    [data-theme="dark"] .mark{background:#243b72}
+    [data-theme="dark"] .button.secondary{background:#263244;color:#e2e9f4}
+    [data-theme="dark"] .button.danger{background:#48272e;color:#ffabb0}
+    [data-theme="dark"] .card{box-shadow:0 2px 10px #0004}
+    [data-theme="dark"] .field label{color:#d6deea}
+    [data-theme="dark"] .field input,[data-theme="dark"] .field select{background:#101722;border-color:#3b4657;color:var(--ink)}
+    [data-theme="dark"] .form-note{background:#1d2735}
+    [data-theme="dark"] .table th,[data-theme="dark"] .table td{border-color:var(--line)}
+    [data-theme="dark"] .pill{background:#252e49;color:#c5d0ff}
+    [data-theme="dark"] .pill.gain{background:#18382d;color:#7ce0ad}
+    [data-theme="dark"] .pill.stop{background:#45262d;color:#ff9aa0}
+    [data-theme="dark"] .icon-button{color:#bdc7d6}
+    [data-theme="dark"] .notice{background:#1d2b46;color:#c5d5ff}
+    [data-theme="dark"] .notice.warning{background:#3b301b;color:#f0cd81}
+    [data-theme="dark"] .notice.error{background:#46252b;color:#ffadb3}
+    [data-theme="dark"] .tabs button{background:#111822;border-color:#303949;color:#aeb8c8}
+    [data-theme="dark"] .tabs button.active{background:#202d50;border-color:#354879;color:#d0d9ff}
+    [data-theme="dark"] .rule{background:var(--line)}
+    [data-theme="dark"] .alert-chip{background:#3a301e;color:#f1d18e}
+    [data-theme="dark"] .alert-chip.ok{background:#19362d;color:#83d9ae}
+    .theme-toggle{border:1px solid var(--line);border-radius:10px;padding:9px 11px;background:var(--paper);color:var(--ink);font-size:12px;font-weight:700;white-space:nowrap}
+    .theme-toggle:hover{border-color:var(--blue)}
+    .theme-toggle:focus-visible{outline:3px solid #315fe855;outline-offset:2px}
+    .auth{position:relative}
+    .auth .theme-toggle{position:absolute;top:22px;right:22px}
+    @media(max-width:520px){.auth .theme-toggle{top:18px;right:18px}.auth .brand{padding-right:92px}}
   </style>
 </head>
 <body>
   <main id="auth-view" class="card auth" hidden>
+    <button id="theme-toggle-auth" class="theme-toggle" type="button" aria-label="Ativar tema escuro">☾ Escuro</button>
     <div class="brand" style="margin-bottom:22px"><div class="mark">WDO</div><div><div class="eyebrow">Diário de operações</div><h1>Gestão do mini dólar</h1></div></div>
     <p>Acesse sua conta para registrar operações. Os dados ficam no Supabase. A sessão termina após 15 minutos sem atividade ou 8 horas de uso e nunca é restaurada ao reabrir a página.</p>
     <div class="tabs"><button id="tab-login" class="active" type="button">Entrar</button><button id="tab-signup" type="button">Criar conta</button></div>
@@ -20,7 +48,7 @@
   </main>
 
   <div id="app-view" class="shell" hidden>
-    <header class="top"><div class="brand"><div class="mark">WDO</div><div><div class="eyebrow">Diário de operações</div><h1>Gestão do mini dólar</h1></div></div><div class="top-actions"><span id="user-email" class="email"></span><button id="signout" class="button secondary" type="button">Sair</button></div></header>
+    <header class="top"><div class="brand"><div class="mark">WDO</div><div><div class="eyebrow">Diário de operações</div><h1>Gestão do mini dólar</h1></div></div><div class="top-actions"><span id="user-email" class="email"></span><button id="theme-toggle-app" class="theme-toggle" type="button" aria-label="Ativar tema escuro">☾ Escuro</button><button id="signout" class="button secondary" type="button">Sair</button></div></header>
     <div id="app-message" class="notice" role="status" hidden></div>
     <div id="alerts" class="section alert-list"></div>
     <section class="grid section" aria-label="Indicadores do mês">
