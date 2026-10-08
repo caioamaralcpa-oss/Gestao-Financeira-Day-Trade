@@ -125,6 +125,64 @@
       $('metric-lot-hint').textContent=plan?`Margem ${money(plan.margin_per_contract)} por contrato · saldo no início do mês ${money(plan.starting_balance)}`:'Defina o capital-base para calcular o lote mensal.';
       render();
     }
+    function lotForBalance(balance) {
+      const margin=balance<=20000?1000:balance<=50000?2000:balance<=100000?3000:balance<=500000?5000:10000;
+      return {margin,contracts:Math.max(0,Math.floor(balance/margin))};
+    }
+    function historicalFeePerContract() {
+      const currentMonth=localDate().slice(0,7);
+      const feesByMonth=new Map();
+      for(const op of operations){
+        const month=op.operation_date.slice(0,7);
+        if(month>=currentMonth) continue;
+        feesByMonth.set(month,(feesByMonth.get(month)||0)+Number(op.costs)/Number(op.contracts));
+      }
+      const samples=[...feesByMonth.entries()].sort(([a],[b])=>b.localeCompare(a)).slice(0,6).map(([,fee])=>fee);
+      return {monthlyFee:samples.length?samples.reduce((sum,value)=>sum+value,0)/samples.length:0,months:samples.length};
+    }
+    function renderProjection(startingBalance) {
+      const fees=historicalFeePerContract();
+      const future=[];
+      const chartValues=[startingBalance];
+      const chartLabels=['Hoje'];
+      let balance=startingBalance;
+      const cursor=new Date();
+      cursor.setDate(1);cursor.setHours(12,0,0,0);cursor.setMonth(cursor.getMonth()+1);
+      for(let index=0;index<12;index++){
+        const opening=balance;
+        const {margin,contracts}=lotForBalance(opening);
+        const gross=contracts*400;
+        const estimatedFees=contracts*fees.monthlyFee;
+        const net=gross-estimatedFees;
+        balance=opening+net;
+        const monthLabel=new Intl.DateTimeFormat('pt-BR',{month:'short',year:'numeric'}).format(cursor);
+        const returnRate=opening>0?net/opening*100:null;
+        future.push(`<tr><td>${monthLabel}</td><td>${money(opening)}</td><td>${contracts}<div class="hint">${money(margin)}/contrato</div></td><td>${money(gross)}</td><td>${money(estimatedFees)}</td><td><strong class="${net>0?'positive':net<0?'negative':''}">${money(net)}</strong></td><td>${money(balance)}</td><td>${returnRate===null?'—':`${returnRate.toFixed(1).replace('.',',')}%`}</td></tr>`);
+        chartValues.push(balance);
+        chartLabels.push(monthLabel);
+        cursor.setMonth(cursor.getMonth()+1);
+      }
+      const growth=balance-startingBalance;
+      const totalRate=startingBalance>0?growth/startingBalance*100:null;
+      $('projection-end').textContent=money(balance);
+      $('projection-growth').textContent=`${money(growth)}${totalRate===null?'':` · ${totalRate.toFixed(1).replace('.',',')}%`}`;
+      $('projection-growth').className=`metric ${growth>0?'positive':growth<0?'negative':''}`;
+      $('projection-rows').innerHTML=future.join('');
+      $('projection-note').textContent=`Referência: R$ 400 brutos por contrato a cada mês, com o lote recalculado pelas faixas do método. ${fees.months?`Taxas estimadas pela média por contrato dos últimos ${fees.months} mês(es) completo(s) com registros.`:'Sem histórico de mês completo para estimar taxas; a projeção considera R$ 0 de custos futuros.'} Não considera stops futuros, depósitos, retiradas nem mudanças na estratégia.`;
+
+      const svg=$('projection-chart'),width=840,height=190,left=42,right=18,top=14,bottom=30;
+      const minValue=Math.min(...chartValues),maxValue=Math.max(...chartValues);
+      const padding=(maxValue-minValue)||Math.max(Math.abs(maxValue)*0.08,100);
+      const low=minValue-padding*0.12,high=maxValue+padding*0.12;
+      const x=(index)=>left+index*(width-left-right)/(chartValues.length-1);
+      const y=(value)=>top+(high-value)*(height-top-bottom)/(high-low);
+      const points=chartValues.map((value,index)=>`${x(index)},${y(value)}`).join(' ');
+      const grid=[0,1,2].map(index=>{const gy=top+index*(height-top-bottom)/2;return `<line class="projection-grid" x1="${left}" y1="${gy}" x2="${width-right}" y2="${gy}"/>`;}).join('');
+      const dots=chartValues.map((value,index)=>`<circle class="projection-point" cx="${x(index)}" cy="${y(value)}" r="3.5"/>`).join('');
+      const labels=chartLabels.map((label,index)=>index%3===0||index===12?`<text class="projection-axis" x="${x(index)}" y="${height-7}" text-anchor="middle">${label}</text>`:'').join('');
+      svg.setAttribute('aria-label',`Projeção de referência: saldo de ${money(startingBalance)} hoje para ${money(balance)} em doze meses.`);
+      svg.innerHTML=`${grid}<polyline class="projection-line" points="${points}"/>${dots}${labels}`;
+    }
     function render() {
       const initial=Number($('initial-capital').value||0);
       const total=operations.reduce((sum,op)=>sum+Number(op.net_result),0);
@@ -143,6 +201,7 @@
       $('metric-rate').textContent=rate===null?'—':`${rate.toFixed(1).replace('.',',')}%`;
       $('metric-rate').className=`metric ${rate===null?'':rate>=75?'positive':'negative'}`;
       $('metric-expectancy').textContent=money(400*Number(plan?.contract_limit||0));
+      renderProjection(balance);
 
       const rows=operations.map(op=>`<tr><td>${new Date(`${op.operation_date}T12:00:00`).toLocaleDateString('pt-BR')}</td><td><span class="pill ${op.outcome}">${op.outcome==='gain'?'Gain':op.outcome==='stop'?'Stop':'Sem resultado'}</span></td><td>${op.contracts}</td><td>${money(op.gross_result)}</td><td>${money(op.costs)}</td><td><strong class="${Number(op.net_result)>0?'positive':Number(op.net_result)<0?'negative':''}">${money(op.net_result)}</strong></td><td><button class="icon-button" type="button" data-delete="${escapeHtml(op.id)}" aria-label="Excluir operação de ${escapeHtml(op.operation_date)}">Excluir</button></td></tr>`).join('');
       $('operations-body').innerHTML=rows;

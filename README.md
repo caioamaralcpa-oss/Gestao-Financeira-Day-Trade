@@ -4,6 +4,8 @@ Aplicação estática em português para registrar e acompanhar operações de m
 
 A interface oferece tema claro e escuro. A escolha inicial segue a preferência de aparência do dispositivo; alternar o tema vale até fechar ou recarregar a página e não é gravado localmente.
 
+O painel inclui uma projeção de referência para os próximos 12 meses: usa R$ 400 brutos por contrato/mês, recalcula o lote pelas mesmas faixas de margem definidas no banco e estima taxas pela média por contrato dos últimos seis meses completos registrados. Sem meses completos no histórico, considera custos futuros iguais a zero e informa essa hipótese. A projeção não prevê stops, depósitos, retiradas nem mudanças de estratégia; não é garantia de resultado.
+
 ## Publicar no Vercel
 
 Importe este repositório no Vercel, selecione a branch `main`, escolha **Other** como framework preset e mantenha a raiz do projeto em `./`. Não há etapa de build nem dependências npm para instalar. O `vercel.json` encaminha a raiz do domínio para a página da aplicação.

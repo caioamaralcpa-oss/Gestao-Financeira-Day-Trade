@@ -33,6 +33,16 @@
     .theme-toggle:focus-visible{outline:3px solid #315fe855;outline-offset:2px}
     .auth{position:relative}
     .auth .theme-toggle{position:absolute;top:22px;right:22px}
+    .projection-summary{display:flex;gap:24px;flex-wrap:wrap;margin:4px 0 18px}
+    .projection-summary .metric{font-size:22px;margin:6px 0 2px}
+    .projection-svg{display:block;width:100%;height:auto;margin:6px 0 18px;overflow:visible}
+    .projection-table{min-width:850px}
+    .projection-table td,.projection-table th{text-align:right}
+    .projection-table td:first-child,.projection-table th:first-child{text-align:left}
+    .projection-line{fill:none;stroke:var(--blue);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+    .projection-point{fill:var(--paper);stroke:var(--blue);stroke-width:2}
+    .projection-grid{stroke:var(--line);stroke-width:1;stroke-dasharray:4 5}
+    .projection-axis{fill:var(--muted);font-size:11px;font-family:inherit}
     @media(max-width:520px){.auth .theme-toggle{top:18px;right:18px}.auth .brand{padding-right:92px}}
   </style>
 </head>
@@ -57,11 +67,23 @@
       <article class="card"><div class="metric-label">Resultado do mês</div><div id="metric-month" class="metric">—</div><div id="metric-month-hint" class="hint">0 operações registradas</div></article>
       <article class="card"><div class="metric-label">Taxa de gain</div><div id="metric-rate" class="metric">—</div><div class="hint">Referência: 75%</div></article>
     </section>
+    <section class="section" aria-labelledby="projection-title">
+      <div class="section-head"><div><h2 id="projection-title">Projeção de referência · 12 meses</h2><p>Recalcula o lote a cada mês pelas faixas de margem do método.</p></div></div>
+      <article class="card">
+        <div id="projection-note" class="notice" role="note"></div>
+        <div class="projection-summary">
+          <div><div class="metric-label">Saldo estimado ao fim de 12 meses</div><div id="projection-end" class="metric">—</div></div>
+          <div><div class="metric-label">Variação acumulada projetada</div><div id="projection-growth" class="metric">—</div></div>
+        </div>
+        <svg id="projection-chart" class="projection-svg" viewBox="0 0 840 190" role="img" aria-label="Gráfico do saldo projetado para os próximos doze meses"></svg>
+        <div class="table-wrap"><table class="table projection-table"><thead><tr><th>Mês</th><th>Saldo inicial</th><th>Lote</th><th>Bruto ref.</th><th>Taxas estim.</th><th>Líquido ref.</th><th>Saldo final</th><th>Retorno</th></tr></thead><tbody id="projection-rows"></tbody></table></div>
+      </article>
+    </section>
     <section class="columns section">
       <article class="card form-card"><h2>Registrar operação</h2>
         <form id="operation-form"><div class="field"><label for="operation-date">Data</label><input id="operation-date" type="date" required></div>
           <div class="field"><label for="outcome">Resultado do dia</label><select id="outcome"><option value="gain">Gain · +R$ 60 por contrato</option><option value="stop">Stop · −R$ 100 por contrato</option><option value="flat">Sem resultado · R$ 0</option></select></div>
-          <div class="form-row"><div class="field"><label for="contracts">Contratos</label><input id="contracts" type="number" min="1" step="1" required></div><div class="field"><label for="costs">Custos (R$)</label><input id="costs" type="number" min="0" step="0.01" value="0" required></div></div>
+          <div class="form-row"><div class="field"><label for="contracts">Contratos</label><input id="contracts" type="number" min="1" step="1" required></div><div class="field"><label for="costs">Custos totais do dia (R$)</label><input id="costs" type="number" min="0" step="0.01" value="0" required></div></div>
           <div id="plan-note" class="form-note">O lote é definido no primeiro registro do mês e fica fixo até o próximo mês.</div><button id="save-operation" class="button" type="submit">Salvar operação</button></form>
       </article>
       <article class="card form-card"><h2>Capital-base</h2><p class="hint">Valor inicial usado para estimar o saldo. A alteração não muda o lote já fixado para o mês atual.</p>
