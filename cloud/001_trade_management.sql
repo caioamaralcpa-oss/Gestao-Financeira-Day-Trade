@@ -121,7 +121,7 @@ begin
   insert into public.monthly_plans
     (user_id, month_start, starting_balance, margin_per_contract, contract_limit)
   values (v_user_id, v_month, v_balance, v_margin, v_limit)
-  on conflict (user_id, month_start) do nothing;
+  on conflict on constraint monthly_plans_pkey do nothing;
 
   return query select p.month_start, p.starting_balance,
                       p.margin_per_contract, p.contract_limit
